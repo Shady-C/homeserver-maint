@@ -1,0 +1,9 @@
+[Unit]
+Description=Weekly OS & Docker maintenance
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flock -n /run/homeserver-maint.lock \
+          /usr/local/sbin/homeserver-maint.sh
+TimeoutStartSec=1h
+
